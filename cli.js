@@ -5,21 +5,19 @@ const figures = require('figures');
 const inquirer = require('inquirer');
 const meow = require('meow');
 const opn = require('opn');
-const githubSearchRepos = require('./');
+const githubSearchRepos = require('github-search-repos');
 
-const cli = meow({
-	help: [
-		'Usage',
-		'  $ github-search-repos',
-		'  $ github-search-repos gulp',
-		'  $ github-search-repos gulp+languge:javascript',
-		'',
-		'Options',
-		'  -i, --interactive  Show results in interactive interface',
-		'  -s, --sort         Sort results by either `stars`, `forks` or `updated`',
-		'  -t, --token        GitHub authentication token'
-	]
-}, {
+const cli = meow(`
+	Usage
+	  $ github-search-repos
+	  $ github-search-repos gulp
+	  $ github-search-repos gulp+languge:javascript
+
+	Options
+	  -i, --interactive  Show results in interactive interface
+	  -s, --sort         Sort results by either \`stars\`, \`forks\` or \`updated\`
+	  -t, --token        GitHub authentication token
+`, {
 	boolean: ['interactive'],
 	string: [
 		'sort',
